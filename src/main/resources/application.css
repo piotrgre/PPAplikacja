@@ -1,0 +1,28 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.pagination {
+	-fx-arrows-visible :false
+	
+}
+.pagination {
+    -fx-border-color:  #0E5D79;
+}
+ 
+.pagination .page {
+    -fx-background-color: #FFFFFF;
+}
+ 
+.pagination .pagination-control {
+    -fx-background-color: #C8C6C6;    
+}
+ 
+.pagination .pagination-control .bullet-button {
+    -fx-background-color: transparent, #DDF1F8, #0E5D79, white, white;
+}
+ 
+.pagination .pagination-control .bullet-button:selected {   
+    -fx-background-color: transparent, #DDF1F8, #0E5D79, white, #0E5D79;
+}
+ 
+.pagination .pagination-control .left-arrow, .right-arrow{
+    -fx-background-color: #DDF1F8, #0E5D79;
+}

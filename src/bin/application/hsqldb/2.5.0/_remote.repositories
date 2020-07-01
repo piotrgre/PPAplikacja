@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Mar 12 15:59:47 CET 2020
+hsqldb-2.5.0.jar>central=
+hsqldb-2.5.0.pom>central=
+hsqldb-2.5.0-sources.jar>central=
