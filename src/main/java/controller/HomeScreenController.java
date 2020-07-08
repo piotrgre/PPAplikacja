@@ -10,7 +10,8 @@ import javafx.scene.control.Pagination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.QuestionPane;
+import view.QuestionPane;
+import view.Question;
 
 public class HomeScreenController {
 

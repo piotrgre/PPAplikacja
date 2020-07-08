@@ -6,18 +6,21 @@ import java.sql.SQLException;
 
 import database.DatabaseLogic.RunnableWithConnection;
 
-public class NonTestDatabaseLogic {
+public class NonTestDatabaseLogic extends DatabaseLogic {
 	
-	public static final String DB_LOCATION = "jdbc:hsqldb:file:mydb;if_exists=true;hsqldb.lock_file=false";
+	private String dbName = "SURVEYDATA";
+	private final String DB_LOCATION = "jdbc:hsqldb:file:mydb;if_exists=true;hsqldb.lock_file=false";
 		
-	public void runWithConnection(RunnableWithConnection rc) {
-		try (Connection c = DriverManager.getConnection(DB_LOCATION, "SA", "")) {
-			rc.run(c);
-		
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
+//	public void runWithConnection(RunnableWithConnection rc) {
+//		try (Connection c = DriverManager.getConnection(DB_LOCATION, "SA", "")) {
+//			rc.run(c);
+//		
+//		} catch (SQLException e) {
+//			throw new RuntimeException(e);
+//		}
+//	}
+	
+
 	
 
 

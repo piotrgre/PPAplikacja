@@ -9,7 +9,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SummaryScreenController">
    <center>
-      <TableView prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="summaryTable" prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn editable="false" prefWidth="176.79999387264252" sortable="false" text="Question" />
           <TableColumn editable="false" prefWidth="176.79998779296875" sortable="false" text="Answer" />
@@ -17,13 +17,13 @@
       </TableView>
    </center>
    <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Review your answers and press Submit" BorderPane.alignment="TOP_LEFT">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can see your answers. Press Exit to close this app" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets bottom="10.0" left="20.0" top="10.0" />
          </BorderPane.margin>
       </Text>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="600.0" text="Submit" BorderPane.alignment="CENTER" />
+      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="600.0" text="Exit" BorderPane.alignment="CENTER" fx:id="exitApp" onAction="#close" />
    </bottom>
 </BorderPane>

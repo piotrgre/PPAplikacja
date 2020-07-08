@@ -7,7 +7,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import application.Main;
-import dao.NonTestAnswerRecordHSQLDAO;
+import dao.AnswerRecordHsqlDAO;
+import database.NonTestDatabaseLogic;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -17,14 +18,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.AnswerRecord;
-import model.Question;
+import view.Question;
+
 
 public class SurveyScreenController {
 
 	public static void finishSurvey() {
 		
 		Stage stage = Main.getStage();
-		NonTestAnswerRecordHSQLDAO answerDAO = new NonTestAnswerRecordHSQLDAO();
+		AnswerRecordHsqlDAO answerDAO = new AnswerRecordHsqlDAO(new NonTestDatabaseLogic());
 
 		try {
 			Main.getStage();
@@ -78,10 +80,10 @@ public class SurveyScreenController {
 
 		}
 		
-		for( int i=0; i<answerDAO.fetchAllRecords().size();i++) {
-			System.out.println("Question: "+answerDAO.fetchAllRecords().get(i).getQuestion()+", Answer:"+answerDAO.fetchAllRecords().get(i).getAnswer()+"  ");
-		}
-		answerDAO.printAllIds();
+//		for( int i=0; i<answerDAO.fetchAllRecords().size();i++) {
+//			System.out.println("Question: "+answerDAO.fetchAllRecords().get(i).getQuestion()+", Answer:"+answerDAO.fetchAllRecords().get(i).getAnswer()+"  ");
+//		}
+//		answerDAO.printAllIds();
 
 
 	}

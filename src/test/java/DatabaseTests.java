@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 
 import dao.AnswerRecordHsqlDAO;
+import database.DatabaseLogic;
+import model.AnswerRecord;
 
 public class DatabaseTests {
 
@@ -57,7 +57,7 @@ public class DatabaseTests {
 	@Test
 	public void testFetchRecordsByQuestionAndAnswer() {
 		int manual = 0;
-		AnswerRecordHsqlDAO rec = new AnswerRecordHsqlDAO();
+		AnswerRecordHsqlDAO rec = new AnswerRecordHsqlDAO(new DatabaseLogic());
 
 		int method = rec.fetchRecordsByQuestionAndAnswer("a", "c").size();
 
@@ -94,7 +94,7 @@ public class DatabaseTests {
 	@Test
 	public void testFetchRecordsByQuestion() {
 		int manual = 0;
-		AnswerRecordHsqlDAO rec = new AnswerRecordHsqlDAO();
+		AnswerRecordHsqlDAO rec = new AnswerRecordHsqlDAO(new DatabaseLogic());
 		try (Connection c = getConnection(DBDESC, "SA", "")) {
 			try (ResultSet rs = c.createStatement().executeQuery("SELECT * FROM SURVEYANSWERS WHERE QUESTION = 'a'")) {
 				while (rs.next()) {
@@ -106,6 +106,37 @@ public class DatabaseTests {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	@Test
+	public void testFetchAllRecords() {
+		int manual = 0;
+		try (Connection c = getConnection(DBDESC, "SA", "")) {
+			try (ResultSet rs = c.createStatement().executeQuery("SELECT * FROM SURVEYANSWERS")){
+				while (rs.next()) {
+					manual++;
+				}
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		AnswerRecordHsqlDAO rec = new AnswerRecordHsqlDAO(new DatabaseLogic());
+		int method = rec.fetchAllRecords().size();
+		Assertions.assertEquals(manual, method);
+		
+		
+		
+	}
+	
+	@Test
+	public void testInsertRecord() {
+		AnswerRecordHsqlDAO rec = new AnswerRecordHsqlDAO(new DatabaseLogic());
+		int before = rec.fetchAllRecords().size();
+		AnswerRecord answer = new AnswerRecord("b", "c");
+		rec.insertRecord(answer);
+		int after = rec.fetchAllRecords().size();
+		Assertions.assertEquals(before + 1, after);
+		
 	}
 
 }

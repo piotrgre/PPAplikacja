@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
-import model.Question;
+import view.Question;
 
 public class Data {
 
